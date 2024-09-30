@@ -166,7 +166,18 @@ public class BlockPuzzle {
      * The first column should be the row index a to h.
      */
     void printMap(char[][] map) {
-        //TODO
+        for(int i = 0;i<map[0].length;i++){
+            if(i == 0) System.out.print(" ");
+            System.out.print(i);
+        }//print:  " 012345678"
+        System.out.println();
+        for(int i = 0;i<map.length;i++){
+            System.out.print((char)('a' + i));//print "a"
+            for(int j = 0;j<map[i].length;j++){
+                System.out.print(map[i][j]);//print element
+            }
+            System.out.println();
+        }
     }
 
 
