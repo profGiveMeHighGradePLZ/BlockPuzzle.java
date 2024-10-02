@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  * @author: ______your name here (SID)_________
  *
@@ -197,7 +200,8 @@ public class BlockPuzzle {
      * remove that puzzle from the puzzles array.
      */
     void getInputAndPlacePuzzle(char[][] map, char[][][] puzzles) {
-        //TODO
+        //Scanner in = new Scanner(System.in);
+
     }
 
     /**
@@ -211,7 +215,20 @@ public class BlockPuzzle {
      * to get the puzzles.
      */
     void randomPuzzleIfNeeded(char[][][] puzzles) {
-        //TODO
+        boolean isEmpty = true;
+        for(int i = 0;i<puzzles.length;i++){
+            if(puzzles[i] != null){
+                isEmpty = false;
+                break;
+            }//check whether puzzles is null
+        }
+        if(isEmpty){
+            Random Rand = new Random();
+            for(int i = 0;i<puzzles.length;i++){
+                int RandomNum = Rand.nextInt(9);
+                puzzles[i] = PUZZLES[RandomNum];
+            }
+        }
     }
 
     /**
@@ -244,8 +261,17 @@ public class BlockPuzzle {
      * of the map. Otherwise, return false.
      */
     boolean canPlace(char[][] map, char[][] puzzle, int r, int c) {
-        //TODO
-        return true;
+        if(r + puzzle.length <= map.length && c + puzzle[0].length <= map[0].length){
+            for(int i = 0;i<puzzle.length;i++){
+                for(int j = 0;j<puzzle[i].length;j++){
+                    if(map[i+r][j+c] != '.'){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        else return false;
     }
     /**
      * This method is to place the puzzle at the position (r, c) of the map.

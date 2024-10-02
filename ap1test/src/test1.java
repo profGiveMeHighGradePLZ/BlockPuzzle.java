@@ -1,31 +1,38 @@
+import java.util.Random;
+
 public class test1 { //test print puzzles
+    static char[][][] PUZZLES = {{{'A'}},                       // A
+
+            {{'B'},                        // B
+                    {'B'}},                       // B
+
+            {{'C', 'C'},                   // CC
+                    {'C', 'C'}},                  // CC
+
+            {{'D', 'D', 'D'},              // DDD
+                    {'D', '.', 'D'}},             // D D
+
+            {{'E', 'E', 'E'},              // EEE
+                    {'.', 'E'}},                  //  E
+
+            {{'F', 'F', 'F'},              // FFF
+                    {'F'}},                       // F
+
+            {{'G', 'G', 'G'},              // GGG
+                    {'.', '.', 'G'}},             //   G
+
+            {{'H', 'H', 'H'},              // HHH
+                    {'H', 'H', 'H'},              // HHH
+                    {'H', 'H', 'H'}},             // HHH
+
+            {{'I', 'I', 'I', 'I', 'I'}}   // IIIII
+
+
+    };
+    public static final int ROUND = 3;
     public static void main(String[] args) {
-        char[][][] puzzles = {{{'A'}},                       // A
-
-                {{'B'},                        // B
-                        {'B'}},                       // B
-
-                {{'C', 'C'},                   // CC
-                        {'C', 'C'}},                  // CC
-
-                {{'D', 'D', 'D'},              // DDD
-                        {'D', '.', 'D'}},             // D D
-
-                {{'E', 'E', 'E'},              // EEE
-                        {'.', 'E'}},                  //  E
-
-                {{'F', 'F', 'F'},              // FFF
-                        {'F'}},                       // F
-
-                {{'G', 'G', 'G'},              // GGG
-                        {'.', '.', 'G'}},             //   G
-
-                {{'H', 'H', 'H'},              // HHH
-                        {'H', 'H', 'H'},              // HHH
-                        {'H', 'H', 'H'}},             // HHH
-
-                {{'I', 'I', 'I', 'I', 'I'}}
-        };
+        char[][][] puzzles = new char[ROUND][][];
+        randomPuzzleIfNeeded(puzzles);
         printPuzzles(puzzles);
     }
     static void printPuzzles(char[][][] puzzles) {
@@ -46,5 +53,20 @@ public class test1 { //test print puzzles
         }
     }
 
-
+    static void randomPuzzleIfNeeded(char[][][] puzzles) {
+        boolean isEmpty = true;
+        for(int i = 0;i<puzzles.length;i++){
+            if(puzzles[i] != null){
+                isEmpty = false;
+                break;
+            }
+        }
+        if(isEmpty){
+            Random Rand = new Random();
+            for(int i = 0;i<puzzles.length;i++){
+                int RandomNum = Rand.nextInt(9);
+                puzzles[i] = PUZZLES[RandomNum];
+            }
+        }
+    }
 }
