@@ -282,7 +282,13 @@ public class BlockPuzzle {
      * The puzzle will not be updated after the puzzle is placed.
      */
     void place(char[][] map, char[][] puzzle, int r, int c) {
-        //TODO
+        if(canPlace(map, puzzle, r, c)){
+            for(int i = 0;i<puzzle.length;i++){
+                for(int j = 0;j<puzzle[i].length;j++){
+                    map[r+i][c+j] = puzzle[i][j];
+                }
+            }
+        }
     }
 
     /**
