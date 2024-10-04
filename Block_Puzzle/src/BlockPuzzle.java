@@ -305,8 +305,13 @@ public class BlockPuzzle {
      * properly, i.e., which method should call this method.
      */
     boolean validateInput(String input) {
-        //TODO
-        return true;
+        if(input.length()!= 2) return false;
+        if((int)(input.charAt(0)-'a') >= 0 && (int)(input.charAt(0)-'z') <= 0){
+            if((int)(input.charAt(1)-'0') >= 0 && (int)(input.charAt(1)-'9') <= 0){
+                return true;
+            }
+        }
+        return false;
     }
 
 
