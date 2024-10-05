@@ -6,12 +6,22 @@ public class test4 {
     }
     void runApp(){
         Scanner in = new Scanner(System.in);
-        while(true){
+        boolean flag = false;
+        int[] array = new int[2];
+        do {
+            flag = false;
+            System.out.print("Enter a coordinate: ");
             String input = in.nextLine();
             if (validateInput(input)) {
-                System.out.println(1);
-            } else System.out.println(0);
-        }
+                array = convertInputToRC(input);
+            }
+            else {
+                System.out.println("Invalid input! Enter Again");
+                flag = true;
+            }
+        }while(flag);
+        System.out.println("coordinate is: ");
+        for(int i:array) System.out.print(i+ " ");
     }
     boolean validateInput(String input) {
         if(input.length()!= 2) return false;
@@ -21,5 +31,11 @@ public class test4 {
             }
         }
         return false;
+    }
+    int[] convertInputToRC(String input) {
+        int[] array = new int[2];
+        array[0] = (int)(input.charAt(0)-'a')%8;
+        array[1] = (int)(input.charAt(1)-'0')%8;
+        return array;
     }
 }

@@ -331,8 +331,10 @@ public class BlockPuzzle {
      * If the input string is "b7", the method should return an array of {1, 7}.
      */
     int[] convertInputToRC(String input) {
-        //TODO
-        return 1;
+        int[] array = new int[2];
+        array[0] = (int)(input.charAt(0)-'a')%8;
+        array[1] = (int)(input.charAt(1)-'0')%8;
+        return array;
     }
 
     /**
