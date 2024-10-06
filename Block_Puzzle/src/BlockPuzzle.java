@@ -239,7 +239,7 @@ public class BlockPuzzle {
      *
      * Return true if it is game over, otherwise return false.
      */
-    boolean gameOver(/** TODO **/) {
+    boolean gameOver(char[][] map, char[][][] puzzlesToPlace) {
         //TODO
         return true;
     }
@@ -349,8 +349,59 @@ public class BlockPuzzle {
      * The method should return the number of rows and columns that are cancelled.
      */
     int cancelPuzzles(char[][] map) {
-        //TODO
-        return 0;
+        int count = 0;
+        boolean[] cancelRow = new boolean[map.length];
+        boolean[] cancelCol = new boolean[map[0].length];
+
+        //whether cancel row
+        for(int i = 0;i<map.length;i++){
+            boolean cancel = true;
+            for(int j = 0;j<map[i].length;j++){
+                if(map[i][j] == '.') {
+                    cancel = false;
+                    break;
+                }
+            }
+            if(cancel){
+                cancelRow[i] = true;
+            }
+        }
+
+        //whether cancel row
+        for(int j = 0;j<map[0].length;j++){
+            boolean cancel = true;
+            for(int i = 0;i<map.length;i++){
+                if(map[i][j] == '.'){
+                    cancel = false;
+                    break;
+                }
+            }
+            if(cancel){
+                cancelCol[j] = true;
+            }
+        }
+
+        //cancel row
+        for(int i = 0;i<cancelRow.length;i++){
+            if(cancelRow[i]){
+                count++;
+                for(int c = 0;c<map[0].length;c++){
+                    map[i][c] = '.';
+                }
+            }
+        }
+
+        //cancel col
+        for(int i = 0;i<cancelCol.length;i++){
+            if(cancelCol[i]){
+                count++;
+                for(int r = 0;r<map.length;r++){
+                    map[r][i] = '.';
+                }
+            }
+        }
+
+        return count;
     }
 
 }
