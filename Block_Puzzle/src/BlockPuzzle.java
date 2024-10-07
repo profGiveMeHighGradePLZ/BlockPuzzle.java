@@ -200,7 +200,35 @@ public class BlockPuzzle {
      * remove that puzzle from the puzzles array.
      */
     void getInputAndPlacePuzzle(char[][] map, char[][][] puzzles) {
-        //Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        boolean flag = true;
+        do {
+            System.out.print("Enter the coordinate:");
+            String coordinate = in.next();
+            if (validateInput(coordinate)) {
+                int[] index = new int[2];
+                index = convertInputToRC(coordinate);
+                System.out.print("Enter the puzzle:");
+                int place = in.nextInt();
+                if (place >= 0 && place <= 2 && puzzles[place] != null && canPlace(map, puzzles[place], index[0], index[1])){
+                    place(map, puzzles[place], index[0], index[1]);
+                    flag = false;
+                    puzzles[place] = null;
+                }
+                else if(!(place >= 0 && place <= 2)){
+                    System.out.println("Error! the puzzle don't exist! Input Again");
+                }
+                else if(puzzles[place] == null){
+                    System.out.println("Error! the puzzle is used! Input Again");
+                }
+                else{
+                    System.out.println("Error! the place is used! Input Again!");
+                }
+            }
+            else {
+                System.out.println("Error! Illegal coordinate! Input Again!");
+            }
+        }while(flag);
 
     }
 
