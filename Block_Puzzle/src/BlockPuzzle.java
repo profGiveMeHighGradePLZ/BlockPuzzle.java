@@ -135,7 +135,7 @@ public class BlockPuzzle {
     void printPuzzles(char[][][] puzzles) {
         //example: puzzles[2] = {{'C', 'C'}, {'C', 'C'}}
         for(int i = 0;i<puzzles.length;i++){
-            System.out.println("Puzzles " + i);
+            System.out.println("Puzzle " + i);
             //print: Puzzle 2
             if(puzzles[i] != null) {
                 for(int a1 = 0;a1<puzzles[i].length;a1++){
