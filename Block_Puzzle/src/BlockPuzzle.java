@@ -221,6 +221,9 @@ public class BlockPuzzle {
                 else if(puzzles[place] == null){
                     System.out.println("Error! the puzzle is used! Input Again");
                 }
+                else if(puzzles[place].length + index[0] > map.length || index[1] + puzzles[place][0].length > map[0].length){
+                    System.out.println("Error! You cannot put it here!");
+                }
                 else{
                     System.out.println("Error! the place is used! Input Again!");
                 }
@@ -268,7 +271,13 @@ public class BlockPuzzle {
      * Return true if it is game over, otherwise return false.
      */
     boolean gameOver(char[][] map, char[][][] puzzlesToPlace) {
-        //TODO
+        for(int i = 0;i<puzzlesToPlace.length;i++){
+            for(int r = 0;r< map.length;r++){
+                for(int c = 0;c<map[i].length;c++){
+                    if(puzzlesToPlace[i] != null && canPlace(map,puzzlesToPlace[i],r,c)) return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -360,8 +369,8 @@ public class BlockPuzzle {
      */
     int[] convertInputToRC(String input) {
         int[] array = new int[2];
-        array[0] = (int)(input.charAt(0)-'a')%8;
-        array[1] = (int)(input.charAt(1)-'0')%8;
+        array[0] = (int)(input.charAt(0)-'a')%9;
+        array[1] = (int)(input.charAt(1)-'0')%9;
         return array;
     }
 

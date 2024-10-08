@@ -40,6 +40,7 @@ public class test6 {
         char[][][] pullzes = new char[3][][];
         while(true) {
             randomPuzzleIfNeeded(pullzes);
+            if(gameOver(map,pullzes)) break;
             printPuzzles(pullzes);
             getInputAndPlacePuzzle(map, pullzes);
             printMap(map);
@@ -168,5 +169,15 @@ public class test6 {
                 puzzles[i] = PUZZLES[RandomNum];
             }
         }
+    }
+    boolean gameOver(char[][] map, char[][][] puzzlesToPlace) {
+        for(int i = 0;i<puzzlesToPlace.length;i++){
+            for(int r = 0;r< map.length;r++){
+                for(int c = 0;c<map[i].length;c++){
+                    if(puzzlesToPlace[i] != null && canPlace(map,puzzlesToPlace[i],r,c)) return false;
+                }
+            }
+        }
+        return true;
     }
 }
