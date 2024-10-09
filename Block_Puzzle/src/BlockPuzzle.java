@@ -140,8 +140,11 @@ public class BlockPuzzle {
             if(puzzles[i] != null) {
                 for(int a1 = 0;a1<puzzles[i].length;a1++){
                     for(int a2 = 0;a2<puzzles[i][a1].length;a2++){
+                        if(puzzles[i][a1][a2] != '.'){
                         System.out.print(puzzles[i][a1][a2]);
                         //print: cc
+                        }
+                        else System.out.print(' ');
                     }
                     System.out.println();
                 }
@@ -209,7 +212,15 @@ public class BlockPuzzle {
                 int[] index = new int[2];
                 index = convertInputToRC(coordinate);
                 System.out.print("Enter the puzzle:");
-                int place = in.nextInt();
+                int place = 0;
+                try{
+                    place = in.nextInt();
+                }
+                catch(Exception e){
+                    System.out.println("Error! Please enter a number");
+                    //break;
+                    continue;
+                }
                 if (place >= 0 && place <= 2 && puzzles[place] != null && canPlace(map, puzzles[place], index[0], index[1])){
                     place(map, puzzles[place], index[0], index[1]);
                     flag = false;
@@ -301,7 +312,7 @@ public class BlockPuzzle {
         if(r + puzzle.length <= map.length && c + puzzle[0].length <= map[0].length){
             for(int i = 0;i<puzzle.length;i++){
                 for(int j = 0;j<puzzle[i].length;j++){
-                    if(map[i+r][j+c] != '.'){
+                    if(puzzle[i][j] != '.' && map[i+r][j+c] != '.'){
                         return false;
                     }
                 }
@@ -322,7 +333,7 @@ public class BlockPuzzle {
         if(canPlace(map, puzzle, r, c)){
             for(int i = 0;i<puzzle.length;i++){
                 for(int j = 0;j<puzzle[i].length;j++){
-                    map[r+i][c+j] = puzzle[i][j];
+                    if(puzzle[i][j] != '.') map[r+i][c+j] = puzzle[i][j];
                 }
             }
         }
