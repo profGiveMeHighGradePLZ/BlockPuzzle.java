@@ -218,8 +218,8 @@ public class BlockPuzzle {
                 }
                 catch(Exception e){
                     System.out.println("Error! Please enter a number");
-                    //break;
-                    continue;
+                    break;
+//                    continue;
                 }
                 if (place >= 0 && place <= 2 && puzzles[place] != null && canPlace(map, puzzles[place], index[0], index[1])){
                     place(map, puzzles[place], index[0], index[1]);
@@ -354,8 +354,8 @@ public class BlockPuzzle {
      */
     boolean validateInput(String input) {
         if(input.length()!= 2) return false;
-        if((int)(input.charAt(0)-'a') >= 0 && (int)(input.charAt(0)-'z') <= 0){
-            if((int)(input.charAt(1)-'0') >= 0 && (int)(input.charAt(1)-'9') <= 0){
+        if((int)(input.charAt(0)-'a') >= 0 && (int)(input.charAt(0)-'h') <= 0){
+            if((int)(input.charAt(1)-'0') >= 0 && (int)(input.charAt(1)-'8') <= 0){
                 return true;
             }
         }
