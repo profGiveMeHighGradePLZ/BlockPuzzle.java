@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author: ______your name here (SID)_________
@@ -267,8 +268,7 @@ public class BlockPuzzle {
         if(isEmpty){
             Random Rand = new Random();
             for(int i = 0;i<puzzles.length;i++){
-                int RandomNum = Rand.nextInt(9);
-                puzzles[i] = PUZZLES[RandomNum];
+                puzzles[i] = PUZZLES[ThreadLocalRandom.current().nextInt(9)];
             }
         }
     }
