@@ -2,36 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * @author: ______your name here (SID)_________
- *
- *          For the instruction of the assignment please refer to the assignment
- *          GitHub.
- *
- *          Plagiarism is a serious offense and can be easily detected. Please
- *          don't share your code to your classmate even if they are threatening
- *          you with your friendship. If they don't have the ability to work on
- *          something that can compile, they would not be able to change your
- *          code to a state that we can't detect the act of plagiarism. For the
- *          first commit of plagiarism, regardless you shared your code or
- *          copied code from others, you will receive 0 with an addition of 5
- *          mark penalty. If you commit plagiarism twice, your case will be
- *          presented in the exam board and you will receive a F directly.
- *
- *          Terms about generative AI:
- *          You are not allowed to use any generative AI in this assignment.
- *          The reason is straight forward. If you use generative AI, you are
- *          unable to practice your coding skills. We would like you to get
- *          familiar with the syntax and the logic of the Java programming.
- *          We will examine your code using detection software as well as
- *          inspecting your code with our eyes. Using generative AI tool
- *          may fail your assignment.
- *
- *          If you cannot work out the logic of the assignment, simply contact
- *          us on Discord. The teaching team is more the eager to provide
- *          you help. We can extend your submission due if it is really
- *          necessary. Just please, don't give up.
- */
+
 public class BlockPuzzle {
 
     public static final
